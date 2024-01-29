@@ -33,9 +33,9 @@ jobs:
         run: cargo clippy --all-targets --all-features -- -D warnings
       - name: Single-process test
         env:
-          RUST_LOG=debug
+          RUST_LOG: "debug"
         run: cargo test
       - name: Multi-process test
         env:
-          RUST_LOG=debug
+          RUST_LOG: "debug"
         run: cargo run
