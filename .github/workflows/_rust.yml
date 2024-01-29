@@ -1,10 +1,12 @@
+---
+
 name: Rust
 
-on:
+"on":  # https://github.com/adrienverge/yamllint/issues/430
   push:
-    branches: [ "main" ]
+    branches: ["main"]
   pull_request:
-    branches: [ "main" ]
+    branches: ["main"]
 
 env:
   CARGO_TERM_COLOR: always
@@ -20,18 +22,20 @@ jobs:
     runs-on: ${{ matrix.runs-on }}
 
     steps:
-    - uses: actions/checkout@v3
-    - name: cargo doc
-      env: RUSTDOCFLAGS: "-D warnings"
-      run: cargo doc --all-features --no-deps --document-private-items
-    - name: cargo fmt
-      run: cargo fmt -- --check
-    - name: cargo clippy
-      run: cargo clippy --all-targets --all-features -- -D warnings
-    - name: Single-process test
-      env: RUST_LOG=debug
-      run: cargo test
-    - name: Multi-process test
-      env: RUST_LOG=debug
-      run: cargo run
-
+      - uses: actions/checkout@v3
+      - name: cargo doc
+        env:
+          RUSTDOCFLAGS: "-D warnings"
+        run: cargo doc --all-features --no-deps --document-private-items
+      - name: cargo fmt
+        run: cargo fmt -- --check
+      - name: cargo clippy
+        run: cargo clippy --all-targets --all-features -- -D warnings
+      - name: Single-process test
+        env:
+          RUST_LOG=debug
+        run: cargo test
+      - name: Multi-process test
+        env:
+          RUST_LOG=debug
+        run: cargo run
