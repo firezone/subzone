@@ -1,3 +1,5 @@
+[![Rust](https://github.com/firezone/subzone/actions/workflows/_rust.yml/badge.svg)](https://github.com/firezone/subzone/actions/workflows/_rust.yml)
+
 # Testing
 
 ```bash
